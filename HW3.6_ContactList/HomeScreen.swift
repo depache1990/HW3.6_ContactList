@@ -11,8 +11,11 @@ struct HomeScreen: View {
     let contactList: [ContactList]
     var body: some View {
         NavigationView {
-            List(contactList, id: \.self) { contact in
-                Text("\(contact.name) \(contact.surname)")
+            List(contactList) {
+                contact in
+                NavigationLink("\(contact.InfoList)") {
+                    ContactInfo(contact: contact)
+                }
             }
             .navigationTitle("Contact List")
         }

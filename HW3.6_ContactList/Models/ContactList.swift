@@ -7,12 +7,11 @@
 
 import Foundation
 
-class ContactList: NSObject {
+class ContactList: NSObject, Identifiable {
     let name: String
     let surname: String
     let emails: String
     let phoneNumbers: String
-    
     var InfoList: String {
         "\(name) \(surname)"
     }
@@ -23,11 +22,10 @@ class ContactList: NSObject {
         self.emails = emails
         self.phoneNumbers = phoneNumbers
     }
-
+    
 }
-
 extension ContactList {
-   static func getContact() -> [ContactList] {
+    static func getContact() -> [ContactList] {
         var employees: [ContactList] = []
         let personNames = DataManager.shared.name.shuffled()
         let personSurnames = DataManager.shared.surname.shuffled()
@@ -48,7 +46,9 @@ extension ContactList {
         }
         return employees
     }
-
+    
+    
+    
 }
 
 enum Contact: String {
