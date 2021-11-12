@@ -8,9 +8,21 @@
 import SwiftUI
 
 struct ContentView: View {
+    let contactList = ContactList.getContact()
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        TabView{
+            HomeScreen(contactList: contactList)
+                .tabItem {
+                    Image(systemName: "person.3.sequence.fill")
+                    Text("Contacts")
+                }
+            ListInfo(contactList: contactList)
+                .tabItem{
+                    Image(systemName: "phone.fill")
+                    Text("Numbers")
+                }
+        }
+
     }
 }
 
