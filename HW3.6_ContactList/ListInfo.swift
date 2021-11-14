@@ -12,15 +12,13 @@ struct ListInfo: View {
     
     var body: some View {
         NavigationView {
-            List(contactList, id: \.self) { contact in
+            List(contactList) { contact in
                 Section(header: Text("\(contact.InfoList)")) {
                     HStack {
-                        Image(systemName: "phone")
-                        Text("\(contact.phoneNumbers)")
+                        Label(contact.phoneNumbers , systemImage: "phone")
                     }
                     HStack {
-                        Image(systemName: "envelope")
-                        Text("\(contact.emails)")
+                        Label(contact.emails, systemImage: "tray")
                     }
                 }
             }

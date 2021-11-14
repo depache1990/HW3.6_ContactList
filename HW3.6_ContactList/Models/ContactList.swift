@@ -6,21 +6,14 @@
 //
 
 import Foundation
-
-class ContactList: NSObject, Identifiable {
+struct ContactList: Identifiable {
+    let id = UUID()
     let name: String
     let surname: String
     let emails: String
     let phoneNumbers: String
     var InfoList: String {
         "\(name) \(surname)"
-    }
-    
-    init(name: String, surname: String, emails: String, phoneNumbers: String){
-        self.name = name
-        self.surname = surname
-        self.emails = emails
-        self.phoneNumbers = phoneNumbers
     }
     
 }
@@ -33,7 +26,12 @@ extension ContactList {
         let personPhoneNumbers = DataManager.shared.phoneNumber.shuffled()
         
         //если массив будет разным по количеству элементов
-        let iterationCount = min(personNames.count,personSurnames.count,personEmails.count,personPhoneNumbers.count)
+        let iterationCount = min(
+            personNames.count,
+            personSurnames.count,
+            personEmails.count,
+            personPhoneNumbers.count
+        )
         
         for index in 0..<iterationCount {
             let employee = ContactList(
@@ -46,12 +44,5 @@ extension ContactList {
         }
         return employees
     }
-    
-    
-    
-}
-
-enum Contact: String {
-    case phone = "Phone"
-    case emails = "Email"
+  
 }
